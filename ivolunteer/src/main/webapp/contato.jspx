@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="corpo">
+		<p:panel header="Cadastro de Contato" id="panelContato" styleClass="align-panel-center">
+
+			
+
+			<h:form id="formContato">
+				<p:panel header="Dados De Contato">
+					<p:growl id="msg" sticky="false" life="5000" />
+					<a:field label="Nome">
+						<p:inputText value="#{ContatoControl.contato.nome}" style="width:480px;" />
+					</a:field>
+					<a:field label="Telefone" >
+						<p:inputMask id="telefone" value="#{ContatoControl.contato.telefone}" mask="(99) 99999-9999">
+						</p:inputMask>
+					</a:field>
+
+					<a:field label="Data Nascimento">
+						<p:calendar value="#{ContatoControl.contato.dataNascimento}" locale="pt" navigator="true" pattern="dd/MM/yyy" style="width:150px" />
+					</a:field>
+				</p:panel>
+			</h:form>
+			<a:newLine/>
+			<p:commandButton value="Salvar" icon="ui-icon-disk" actionListener="#{ContatoControl.confirmar}" update="panelContato" />
+
+		</p:panel>
+	</ui:define>
+</ui:composition>
